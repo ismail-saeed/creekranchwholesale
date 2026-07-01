@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-const API = "http://localhost:5000/api";
+const API = "https://creekranchwholesale.onrender.com/api";
 const OWNER_PIN = "1234"; // غيره لاحقاً
 
 export default function App() {
