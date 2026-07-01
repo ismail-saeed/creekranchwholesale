@@ -69,26 +69,14 @@ res.json(products);
 });
 
 // ===============================
-// React Build
-// ===============================
-
-app.use(express.static(path.join(__dirname, "build")));
-
-app.use((req, res) => {
-res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
-// ===============================
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-
 console.log(`
 =========================================
 Creek Ranch Wholesale Server Started
 Port : ${PORT}
 =========================================
 `);
-
 });
