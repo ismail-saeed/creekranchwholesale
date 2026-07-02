@@ -10,63 +10,81 @@ setOpen(false);
 window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-const navItems = [
-{ title: "Home", page: "home" },
-{ title: "Order", page: "order" },
-{ title: "Products", page: "products" },
-{ title: "Services", page: "services" },
-{ title: "Owner Access", page: "login" },
+const items = [
+["home", "Home"],
+["order", "Order"],
+["products", "Products"],
+["services", "Services"],
+["login", "Owner Access"],
 ];
 
 return (
+<>
+<style>{`
+* { box-sizing: border-box; }
+body { margin: 0; overflow-x: hidden; }
+
+.desktop-menu { display: flex; }
+.menu-btn { display: none; }
+
+@media (max-width: 768px) {
+.desktop-menu { display: none !important; }
+.menu-btn { display: block !important; }
+.brand-text { font-size: 22px !important; }
+.sub-brand { font-size: 14px !important; }
+.logo-img { width: 70px !important; height: 70px !important; }
+}
+`}</style>
+
 <header style={styles.header}>
 <div style={styles.inner}>
 <div style={styles.logoArea} onClick={() => goTo("home")}>
 <img
+className="logo-img"
 src="/images/Logo.jpg"
-alt="AL-MIZAN Halal Meat"
+alt="AL-MIZAN"
 style={styles.logo}
 />
 
 <div>
-<div style={styles.brand}>AL-MIZAN</div>
-<div style={styles.subBrand}>HALAL MEAT</div>
+<div className="brand-text" style={styles.brand}>AL-MIZAN</div>
+<div className="sub-brand" style={styles.subBrand}>HALAL MEAT</div>
 </div>
 </div>
 
-<nav style={styles.desktopMenu}>
-{navItems.map((item) => (
+<nav className="desktop-menu" style={styles.desktopMenu}>
+{items.map(([page, title]) => (
 <button
-key={item.page}
-onClick={() => goTo(item.page)}
+key={page}
+onClick={() => goTo(page)}
 style={{
-...styles.navButton,
-...(view === item.page ? styles.activeButton : {}),
+...styles.navBtn,
+...(view === page ? styles.active : {}),
 }}
 >
-{item.title}
+{title}
 </button>
 ))}
 
-<button onClick={onScan} style={styles.scanButton}>
+<button onClick={onScan} style={styles.scanBtn}>
 ⛶ Scan to Order
 </button>
 </nav>
 
-<button style={styles.menuButton} onClick={() => setOpen(!open)}>
+<button
+className="menu-btn"
+style={styles.menuBtn}
+onClick={() => setOpen(!open)}
+>
 ☰
 </button>
 </div>
 
 {open && (
 <div style={styles.mobileMenu}>
-{navItems.map((item) => (
-<button
-key={item.page}
-onClick={() => goTo(item.page)}
-style={styles.mobileButton}
->
-{item.title}
+{items.map(([page, title]) => (
+<button key={page} onClick={() => goTo(page)} style={styles.mobileBtn}>
+{title}
 </button>
 ))}
 
@@ -76,26 +94,29 @@ style={styles.mobileButton}
 </div>
 )}
 </header>
+</>
 );
 }
 
 const styles = {
 header: {
+background: green,
+borderBottom: `3px solid ${gold}`,
 position: "sticky",
 top: 0,
 zIndex: 1000,
-background: green,
-borderBottom: `2px solid ${gold}`,
+width: "100%",
+overflowX: "hidden",
 },
 
 inner: {
 maxWidth: 1250,
 margin: "0 auto",
-padding: "12px 22px",
+padding: "12px 16px",
 display: "flex",
 alignItems: "center",
 justifyContent: "space-between",
-gap: 18,
+width: "100%",
 },
 
 logoArea: {
@@ -109,48 +130,45 @@ logo: {
 width: 58,
 height: 58,
 objectFit: "contain",
+background: "white",
 },
 
 brand: {
-color: "#fff",
-fontSize: 22,
+color: "white",
+fontSize: 24,
 fontWeight: "900",
-letterSpacing: 1.5,
 lineHeight: 1,
 },
 
 subBrand: {
 color: gold,
-fontSize: 13,
+fontSize: 14,
 fontWeight: "bold",
 letterSpacing: 2,
 marginTop: 5,
 },
 
 desktopMenu: {
-display: "flex",
 alignItems: "center",
-gap: 34,
-justifyContent: "flex-end",
+gap: 28,
 },
 
-navButton: {
+navBtn: {
 background: "transparent",
-color: "#fff",
+color: "white",
 border: "none",
-borderRadius: 0,
 padding: "8px 0",
-fontWeight: "800",
+fontWeight: "900",
+fontSize: 15,
 cursor: "pointer",
-fontSize: 16,
 },
 
-activeButton: {
+active: {
 color: gold,
 borderBottom: `3px solid ${gold}`,
 },
 
-scanButton: {
+scanBtn: {
 background: gold,
 color: green,
 border: "none",
@@ -158,36 +176,35 @@ borderRadius: 8,
 padding: "12px 22px",
 fontWeight: "900",
 cursor: "pointer",
-fontSize: 16,
 },
 
-menuButton: {
-background: "transparent",
-color: "#fff",
+menuBtn: {
+background: gold,
+color: green,
 border: "none",
-fontSize: 34,
-fontWeight: "bold",
+borderRadius: 8,
+fontSize: 28,
+padding: "6px 12px",
 cursor: "pointer",
 },
 
 mobileMenu: {
-background: "#08351f",
-padding: 16,
 display: "flex",
 flexDirection: "column",
-gap: 10,
-borderTop: `1px solid ${gold}`,
+gap: 8,
+padding: 14,
+background: "#08351f",
 },
 
-mobileButton: {
+mobileBtn: {
 background: "transparent",
-color: "#fff",
+color: "white",
 border: "none",
-borderBottom: `1px solid rgba(213,166,66,.4)`,
+borderBottom: `1px solid rgba(213,166,66,.35)`,
 padding: "13px",
-fontWeight: "900",
-fontSize: 16,
 textAlign: "left",
+fontSize: 17,
+fontWeight: "900",
 },
 
 mobileScan: {
@@ -195,8 +212,8 @@ background: gold,
 color: green,
 border: "none",
 borderRadius: 8,
-padding: "13px",
+padding: "14px",
 fontWeight: "900",
-fontSize: 16,
+fontSize: 17,
 },
 };
