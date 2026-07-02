@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Story from "./components/Story";
 import Products from "./components/Products";
+import About from "./components/About";
 import Order from "./components/Order";
 import Services from "./components/Services";
 import Owner from "./components/Owner";
@@ -156,7 +157,7 @@ Scan to Order / Place Order
 </section>
 </>
 )}
-
+{view === "about" && <About setView={setView} />}
 {view === "order" && (
 <Order
 order={order}

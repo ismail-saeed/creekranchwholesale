@@ -12,6 +12,7 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 
 const items = [
 ["home", "Home"],
+["about", "About Us"],
 ["order", "Order"],
 ["products", "Products"],
 ["services", "Services"],
@@ -21,74 +22,199 @@ const items = [
 return (
 <>
 <style>{`
-* { box-sizing: border-box; }
-body { margin: 0; overflow-x: hidden; }
+.nav-header {
+background: ${green};
+border-bottom: 3px solid ${gold};
+position: sticky;
+top: 0;
+z-index: 1000;
+width: 100%;
+}
 
-.desktop-menu { display: flex; }
-.menu-btn { display: none; }
+.nav-inner {
+max-width: 1250px;
+margin: 0 auto;
+padding: 12px 16px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+}
 
-@media (max-width: 768px) {
-.desktop-menu { display: none !important; }
-.menu-btn { display: block !important; }
-.brand-text { font-size: 22px !important; }
-.sub-brand { font-size: 14px !important; }
-.logo-img { width: 70px !important; height: 70px !important; }
+.nav-logo-area {
+display: flex;
+align-items: center;
+gap: 12px;
+cursor: pointer;
+}
+
+.nav-logo {
+width: 58px;
+height: 58px;
+object-fit: contain;
+background: white;
+}
+
+.nav-brand {
+color: white;
+font-size: 24px;
+font-weight: 900;
+line-height: 1;
+}
+
+.nav-sub {
+color: ${gold};
+font-size: 14px;
+font-weight: bold;
+letter-spacing: 2px;
+margin-top: 5px;
+}
+
+.desktop-menu {
+display: flex;
+align-items: center;
+gap: 24px;
+}
+
+.nav-btn {
+background: transparent;
+color: white;
+border: none;
+padding: 8px 0;
+font-weight: 900;
+font-size: 15px;
+cursor: pointer;
+white-space: nowrap;
+}
+
+.nav-btn.active {
+color: ${gold};
+border-bottom: 3px solid ${gold};
+}
+
+.scan-btn {
+background: ${gold};
+color: ${green};
+border: none;
+border-radius: 8px;
+padding: 12px 18px;
+font-weight: 900;
+cursor: pointer;
+white-space: nowrap;
+}
+
+.menu-btn {
+display: none;
+background: ${gold};
+color: ${green};
+border: none;
+border-radius: 8px;
+font-size: 28px;
+padding: 6px 12px;
+cursor: pointer;
+}
+
+.mobile-menu {
+display: none;
+}
+
+@media (max-width: 900px) {
+.desktop-menu {
+display: none;
+}
+
+.menu-btn {
+display: block;
+}
+
+.mobile-menu {
+display: flex;
+flex-direction: column;
+gap: 8px;
+padding: 14px;
+background: #08351f;
+}
+
+.mobile-btn {
+background: transparent;
+color: white;
+border: none;
+border-bottom: 1px solid rgba(213,166,66,.35);
+padding: 13px;
+text-align: left;
+font-size: 17px;
+font-weight: 900;
+}
+
+.mobile-scan {
+background: ${gold};
+color: ${green};
+border: none;
+border-radius: 8px;
+padding: 14px;
+font-weight: 900;
+font-size: 17px;
+}
+
+.nav-logo {
+width: 60px;
+height: 60px;
+}
+
+.nav-brand {
+font-size: 22px;
+}
+
+.nav-sub {
+font-size: 13px;
+}
 }
 `}</style>
 
-<header style={styles.header}>
-<div style={styles.inner}>
-<div style={styles.logoArea} onClick={() => goTo("home")}>
-<img
-className="logo-img"
-src="/images/Logo.jpg"
-alt="AL-MIZAN"
-style={styles.logo}
-/>
-
+<header className="nav-header">
+<div className="nav-inner">
+<div className="nav-logo-area" onClick={() => goTo("home")}>
+<img className="nav-logo" src="/images/Logo.jpg" alt="AL-MIZAN" />
 <div>
-<div className="brand-text" style={styles.brand}>AL-MIZAN</div>
-<div className="sub-brand" style={styles.subBrand}>HALAL MEAT</div>
+<div className="nav-brand">AL-MIZAN</div>
+<div className="nav-sub">HALAL MEAT</div>
 </div>
 </div>
 
-<nav className="desktop-menu" style={styles.desktopMenu}>
+<nav className="desktop-menu">
 {items.map(([page, title]) => (
 <button
 key={page}
 onClick={() => goTo(page)}
-style={{
-...styles.navBtn,
-...(view === page ? styles.active : {}),
-}}
+className={`nav-btn ${view === page ? "active" : ""}`}
 >
 {title}
 </button>
 ))}
 
-<button onClick={onScan} style={styles.scanBtn}>
+<button onClick={onScan} className="scan-btn">
 ⛶ Scan to Order
 </button>
 </nav>
 
-<button
-className="menu-btn"
-style={styles.menuBtn}
-onClick={() => setOpen(!open)}
->
+<button className="menu-btn" onClick={() => setOpen(!open)}>
 ☰
 </button>
 </div>
 
 {open && (
-<div style={styles.mobileMenu}>
+<div className="mobile-menu">
 {items.map(([page, title]) => (
-<button key={page} onClick={() => goTo(page)} style={styles.mobileBtn}>
+<button
+key={page}
+onClick={() => goTo(page)}
+className="mobile-btn"
+>
 {title}
 </button>
 ))}
 
-<button onClick={onScan} style={styles.mobileScan}>
+<button onClick={onScan} className="mobile-scan">
 ⛶ Scan to Order
 </button>
 </div>
@@ -97,123 +223,3 @@ onClick={() => setOpen(!open)}
 </>
 );
 }
-
-const styles = {
-header: {
-background: green,
-borderBottom: `3px solid ${gold}`,
-position: "sticky",
-top: 0,
-zIndex: 1000,
-width: "100%",
-overflowX: "hidden",
-},
-
-inner: {
-maxWidth: 1250,
-margin: "0 auto",
-padding: "12px 16px",
-display: "flex",
-alignItems: "center",
-justifyContent: "space-between",
-width: "100%",
-},
-
-logoArea: {
-display: "flex",
-alignItems: "center",
-gap: 12,
-cursor: "pointer",
-},
-
-logo: {
-width: 58,
-height: 58,
-objectFit: "contain",
-background: "white",
-},
-
-brand: {
-color: "white",
-fontSize: 24,
-fontWeight: "900",
-lineHeight: 1,
-},
-
-subBrand: {
-color: gold,
-fontSize: 14,
-fontWeight: "bold",
-letterSpacing: 2,
-marginTop: 5,
-},
-
-desktopMenu: {
-alignItems: "center",
-gap: 28,
-},
-
-navBtn: {
-background: "transparent",
-color: "white",
-border: "none",
-padding: "8px 0",
-fontWeight: "900",
-fontSize: 15,
-cursor: "pointer",
-},
-
-active: {
-color: gold,
-borderBottom: `3px solid ${gold}`,
-},
-
-scanBtn: {
-background: gold,
-color: green,
-border: "none",
-borderRadius: 8,
-padding: "12px 22px",
-fontWeight: "900",
-cursor: "pointer",
-},
-
-menuBtn: {
-background: gold,
-color: green,
-border: "none",
-borderRadius: 8,
-fontSize: 28,
-padding: "6px 12px",
-cursor: "pointer",
-},
-
-mobileMenu: {
-display: "flex",
-flexDirection: "column",
-gap: 8,
-padding: 14,
-background: "#08351f",
-},
-
-mobileBtn: {
-background: "transparent",
-color: "white",
-border: "none",
-borderBottom: `1px solid rgba(213,166,66,.35)`,
-padding: "13px",
-textAlign: "left",
-fontSize: 17,
-fontWeight: "900",
-},
-
-mobileScan: {
-background: gold,
-color: green,
-border: "none",
-borderRadius: 8,
-padding: "14px",
-fontWeight: "900",
-fontSize: 17,
-},
-};
