@@ -9,6 +9,7 @@ import Order from "./components/Order";
 import Services from "./components/Services";
 import Owner from "./components/Owner";
 import Careers from "./components/Careers";
+import TrustBadges from "./components/TrustBadges";
 import Footer from "./components/Footer";
 
 import { styles } from "./styles";
@@ -135,13 +136,7 @@ Professional halal slaughter and processing services for sheep,
 goats, cattle, stores, restaurants, and wholesale partners.
 </p>
 
-<div style={local.badgeGrid}>
-<Badge title="HMS Halal Certified" />
-<Badge title="USDA Inspected" />
-<Badge title="Professional Service" />
-<Badge title="Fast Turnaround" />
-<Badge title="Quality Guaranteed" />
-</div>
+<TrustBadges />
 
 <button
 style={{ ...styles.goldBtn, width: "100%" }}
@@ -201,25 +196,3 @@ saveProduct={saveProduct}
 );
 }
 
-function Badge({ title }) {
-return <div style={local.badge}>{title}</div>;
-}
-
-const local = {
-badgeGrid: {
-display: "grid",
-gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
-gap: 14,
-margin: "25px 0",
-},
-
-badge: {
-background: "#062b18",
-color: "white",
-border: "2px solid #d5a642",
-borderRadius: 14,
-padding: 18,
-textAlign: "center",
-fontWeight: "bold",
-},
-};
