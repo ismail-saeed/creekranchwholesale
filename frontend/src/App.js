@@ -8,6 +8,7 @@ import About from "./components/About";
 import Order from "./components/Order";
 import Services from "./components/Services";
 import Owner from "./components/Owner";
+import Careers from "./components/Careers";
 import Footer from "./components/Footer";
 
 import { styles } from "./styles";
@@ -62,7 +63,6 @@ setLoading(true);
 
 try {
 await apiCreateOrder(order);
-
 alert("Order submitted successfully. Thank you!");
 
 setOrder({
@@ -116,18 +116,13 @@ alert("Save failed");
 }
 };
 
-const openScanner = () => {
-alert("QR scanner will be added in the next step.");
-};
-
 return (
 <div style={styles.page}>
-<Navbar view={view} setView={setView} onScan={openScanner} />
+<Navbar view={view} setView={setView} />
 
 {view === "home" && (
 <>
 <Hero setView={setView} />
-
 <Story />
 
 <section style={styles.section}>
@@ -152,12 +147,16 @@ goats, cattle, stores, restaurants, and wholesale partners.
 style={{ ...styles.goldBtn, width: "100%" }}
 onClick={() => setView("order")}
 >
-Scan to Order / Place Order
+Place Order
 </button>
 </section>
 </>
 )}
+
 {view === "about" && <About setView={setView} />}
+
+{view === "careers" && <Careers setView={setView} />}
+
 {view === "order" && (
 <Order
 order={order}

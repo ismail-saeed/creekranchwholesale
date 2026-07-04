@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { green, gold } from "../styles";
 
-export default function Navbar({ view, setView, onScan }) {
+export default function Navbar({ view, setView }) {
 const [open, setOpen] = useState(false);
 
 const goTo = (page) => {
@@ -16,6 +16,7 @@ const items = [
 ["order", "Order"],
 ["products", "Products"],
 ["services", "Services"],
+["careers", "Careers"],
 ["login", "Owner Access"],
 ];
 
@@ -73,7 +74,7 @@ margin-top: 5px;
 .desktop-menu {
 display: flex;
 align-items: center;
-gap: 24px;
+gap: 22px;
 }
 
 .nav-btn {
@@ -90,17 +91,6 @@ white-space: nowrap;
 .nav-btn.active {
 color: ${gold};
 border-bottom: 3px solid ${gold};
-}
-
-.scan-btn {
-background: ${gold};
-color: ${green};
-border: none;
-border-radius: 8px;
-padding: 12px 18px;
-font-weight: 900;
-cursor: pointer;
-white-space: nowrap;
 }
 
 .menu-btn {
@@ -146,16 +136,6 @@ font-size: 17px;
 font-weight: 900;
 }
 
-.mobile-scan {
-background: ${gold};
-color: ${green};
-border: none;
-border-radius: 8px;
-padding: 14px;
-font-weight: 900;
-font-size: 17px;
-}
-
 .nav-logo {
 width: 60px;
 height: 60px;
@@ -191,10 +171,6 @@ className={`nav-btn ${view === page ? "active" : ""}`}
 {title}
 </button>
 ))}
-
-<button onClick={onScan} className="scan-btn">
-⛶ Scan to Order
-</button>
 </nav>
 
 <button className="menu-btn" onClick={() => setOpen(!open)}>
@@ -213,10 +189,6 @@ className="mobile-btn"
 {title}
 </button>
 ))}
-
-<button onClick={onScan} className="mobile-scan">
-⛶ Scan to Order
-</button>
 </div>
 )}
 </header>
