@@ -31,19 +31,9 @@ transform: translateY(-4px) scale(1.04);
 box-shadow: 0 14px 30px rgba(0,0,0,.35);
 }
 
-.hero-badge {
-transition: all .3s ease;
-}
-
-.hero-badge:hover {
-transform: translateY(-3px);
-background: rgba(213,166,66,.95) !important;
-color: #062b18 !important;
-}
-
 @media (max-width: 768px) {
 .hero-section {
-min-height: 640px !important;
+min-height: 610px !important;
 }
 
 .hero-title {
@@ -89,13 +79,6 @@ Premium USDA Inspected Halal Processing
 Serving restaurants, stores, wholesale partners, and families across DFW.
 </p>
 
-<div style={styles.badges}>
-<span className="hero-badge" style={styles.badge}>HMS Halal Certified</span>
-<span className="hero-badge" style={styles.badge}>USDA Inspected</span>
-<span className="hero-badge" style={styles.badge}>Fast Turnaround</span>
-<span className="hero-badge" style={styles.badge}>Quality Guaranteed</span>
-</div>
-
 <div className="hero-buttons" style={styles.buttons}>
 <button
 className="hero-btn"
@@ -130,7 +113,7 @@ Careers
 const styles = {
 hero: {
 position: "relative",
-minHeight: "720px",
+minHeight: "680px",
 overflow: "hidden",
 display: "flex",
 alignItems: "center",
@@ -194,27 +177,9 @@ smallText: {
 fontSize: "19px",
 lineHeight: 1.6,
 maxWidth: "800px",
-margin: "0 auto 30px",
+margin: "0 auto 34px",
 color: "#f5f0df",
 textShadow: "0 3px 12px rgba(0,0,0,.75)",
-},
-
-badges: {
-display: "flex",
-justifyContent: "center",
-flexWrap: "wrap",
-gap: "12px",
-marginBottom: "36px",
-},
-
-badge: {
-background: "rgba(6,43,24,.9)",
-border: "2px solid #d5a642",
-borderRadius: "50px",
-padding: "11px 20px",
-fontWeight: "900",
-color: "white",
-boxShadow: "0 8px 22px rgba(0,0,0,.25)",
 },
 
 buttons: {
@@ -258,3 +223,4 @@ fontWeight: "900",
 cursor: "pointer",
 },
 };
+
