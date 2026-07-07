@@ -137,3 +137,4 @@ color: "#444",
 lineHeight: 1.7,
 minHeight: 95,
 },
+};
