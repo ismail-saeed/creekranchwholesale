@@ -3,14 +3,66 @@ import { green, gold } from "../styles";
 
 export default function Footer() {
 return (
+<>
+<style>{`
+.footer-link {
+color: white;
+text-decoration: none;
+font-size: 22px;
+line-height: 2;
+display: inline-block;
+transition: all .25s ease;
+}
+
+.footer-link:hover {
+color: #d5a642;
+transform: scale(1.08);
+}
+
+.call-link {
+background: #d5a642;
+color: #062b18 !important;
+padding: 12px 24px;
+border-radius: 50px;
+font-weight: 900;
+margin-bottom: 18px;
+animation: callPulse 1.8s infinite;
+}
+
+@keyframes callPulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.05); }
+100% { transform: scale(1); }
+}
+`}</style>
+
 <footer style={styles.footer}>
 <div style={styles.contact}>
 <h3 style={styles.title}>Contact Us Today</h3>
 
-<p>+1 (972) 834-3147</p>
-<p>CreekRanchInc@gmail.com</p>
-<p>CreekRanchInc.com</p>
-<p>413 CR 4781, Boyd, TX 76023</p>
+<a href="tel:+19728343147" className="footer-link call-link">
+📞 Call Now: +1 (972) 834-3147
+</a>
+
+<br />
+
+<a
+href="mailto:CreekRanchInc@gmail.com"
+className="footer-link"
+>
+✉️ CreekRanchInc@gmail.com
+</a>
+
+<br />
+
+<a
+href="https://maps.google.com/?q=413+CR+4781+Boyd+TX+76023"
+target="_blank"
+rel="noopener noreferrer"
+className="footer-link"
+>
+📍 413 CR 4781, Boyd, TX 76023
+</a>
 </div>
 
 <div style={styles.logoWrap}>
@@ -25,6 +77,7 @@ style={styles.logo}
 QUALITY • TRUST • PURITY
 </div>
 </footer>
+</>
 );
 }
 
@@ -45,7 +98,7 @@ marginBottom: 25,
 title: {
 color: gold,
 fontSize: 28,
-marginBottom: 15,
+marginBottom: 20,
 },
 
 logoWrap: {
