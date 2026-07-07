@@ -32,7 +32,7 @@ backgroundImage: certificate.background
 : "none",
 }}
 >
-<div style={styles.imageOverlay}></div>
+<div style={styles.overlay}></div>
 <div style={styles.top}></div>
 
 <div style={styles.content}>
@@ -50,15 +50,10 @@ backgroundImage: certificate.background
 
 <button
 className="trust-btn"
-style={{
-...styles.button,
-...(certificate.status !== "available" ? styles.disabled : {}),
-}}
+style={styles.button}
 onClick={() => onOpen(certificate)}
 >
-{certificate.status === "available"
-? "View Certificate"
-: "Certificate Coming Soon"}
+View Certificate
 </button>
 </div>
 </article>
@@ -81,17 +76,12 @@ overflow: "hidden",
 boxShadow: "0 12px 28px rgba(0,0,0,.12)",
 },
 
-imageOverlay: {
+overlay: {
 position: "absolute",
 inset: 0,
 background:
 "linear-gradient(rgba(248,241,217,.90), rgba(248,241,217,.88))",
 zIndex: 1,
-},
-
-content: {
-position: "relative",
-zIndex: 3,
 },
 
 top: {
@@ -102,6 +92,11 @@ right: 0,
 height: 7,
 background: `linear-gradient(90deg, ${green}, ${gold}, ${green})`,
 zIndex: 4,
+},
+
+content: {
+position: "relative",
+zIndex: 3,
 },
 
 circle: {
@@ -142,21 +137,3 @@ color: "#444",
 lineHeight: 1.7,
 minHeight: 95,
 },
-
-button: {
-width: "100%",
-marginTop: 18,
-background: gold,
-color: green,
-border: "none",
-borderRadius: 12,
-padding: "13px",
-fontWeight: "900",
-cursor: "pointer",
-},
-
-disabled: {
-background: "#d8c58b",
-color: "#555",
-},
-};
