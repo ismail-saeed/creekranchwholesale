@@ -8,31 +8,44 @@ return (
 .footer-link {
 color: white;
 text-decoration: none;
-font-size: 22px;
+font-size: 21px;
 line-height: 2;
-display: inline-block;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
 transition: all .25s ease;
 }
 
 .footer-link:hover {
 color: #d5a642;
-transform: scale(1.08);
+transform: scale(1.05);
 }
 
-.call-link {
+.footer-icon {
+color: #d5a642;
+font-size: 24px;
+font-weight: 900;
+}
+
+.call-btn {
 background: #d5a642;
 color: #062b18 !important;
-padding: 12px 24px;
-border-radius: 50px;
+text-decoration: none;
+border-radius: 12px;
+padding: 15px 34px;
+font-size: 18px;
 font-weight: 900;
+display: inline-flex;
+align-items: center;
+gap: 10px;
+transition: all .3s ease;
 margin-bottom: 18px;
-animation: callPulse 1.8s infinite;
 }
 
-@keyframes callPulse {
-0% { transform: scale(1); }
-50% { transform: scale(1.05); }
-100% { transform: scale(1); }
+.call-btn:hover {
+transform: translateY(-4px) scale(1.04);
+box-shadow: 0 14px 30px rgba(0,0,0,.35);
 }
 `}</style>
 
@@ -40,17 +53,16 @@ animation: callPulse 1.8s infinite;
 <div style={styles.contact}>
 <h3 style={styles.title}>Contact Us Today</h3>
 
-<a href="tel:+19728343147" className="footer-link call-link">
-📞 Call Now: +1 (972) 834-3147
+<a href="tel:+19728343147" className="call-btn">
+<span>☎</span>
+Call Now
 </a>
 
 <br />
 
-<a
-href="mailto:CreekRanchInc@gmail.com"
-className="footer-link"
->
-✉️ CreekRanchInc@gmail.com
+<a href="mailto:CreekRanchInc@gmail.com" className="footer-link">
+<span className="footer-icon">✉</span>
+CreekRanchInc@gmail.com
 </a>
 
 <br />
@@ -61,7 +73,8 @@ target="_blank"
 rel="noopener noreferrer"
 className="footer-link"
 >
-📍 413 CR 4781, Boyd, TX 76023
+<span className="footer-icon">⌖</span>
+413 CR 4781, Boyd, TX 76023
 </a>
 </div>
 
@@ -73,9 +86,7 @@ style={styles.logo}
 />
 </div>
 
-<div style={styles.line}>
-QUALITY • TRUST • PURITY
-</div>
+<div style={styles.line}>QUALITY • TRUST • PURITY</div>
 </footer>
 </>
 );
