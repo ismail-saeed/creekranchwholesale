@@ -8,44 +8,83 @@ return (
 .footer-link {
 color: white;
 text-decoration: none;
-font-size: 21px;
-line-height: 2;
+font-size: 22px;
+line-height: 1.6;
 display: inline-flex;
 align-items: center;
 justify-content: center;
-gap: 10px;
+gap: 12px;
 transition: all .25s ease;
+max-width: 95%;
+word-break: break-word;
 }
 
 .footer-link:hover {
 color: #d5a642;
-transform: scale(1.05);
+transform: scale(1.04);
 }
 
 .footer-icon {
 color: #d5a642;
-font-size: 24px;
+font-size: 26px;
 font-weight: 900;
+flex-shrink: 0;
 }
 
 .call-btn {
 background: #d5a642;
 color: #062b18 !important;
 text-decoration: none;
-border-radius: 12px;
-padding: 15px 34px;
-font-size: 18px;
+border-radius: 14px;
+padding: 18px 52px;
+font-size: 22px;
 font-weight: 900;
 display: inline-flex;
 align-items: center;
-gap: 10px;
+justify-content: center;
+gap: 14px;
 transition: all .3s ease;
-margin-bottom: 18px;
+margin: 8px 0 28px;
+min-width: 300px;
 }
 
 .call-btn:hover {
 transform: translateY(-4px) scale(1.04);
 box-shadow: 0 14px 30px rgba(0,0,0,.35);
+}
+
+@media (max-width: 768px) {
+.footer-link {
+font-size: 20px;
+line-height: 1.5;
+}
+
+.call-btn {
+width: 82%;
+min-width: unset;
+padding: 18px 20px;
+font-size: 23px;
+border-radius: 18px;
+}
+
+.footer-email {
+font-size: 22px;
+}
+
+.footer-address {
+font-size: 21px;
+max-width: 92%;
+}
+}
+
+@media (max-width: 420px) {
+.footer-email {
+font-size: 20px;
+}
+
+.footer-address {
+font-size: 20px;
+}
 }
 `}</style>
 
@@ -60,7 +99,10 @@ Call Now
 
 <br />
 
-<a href="mailto:CreekRanchInc@gmail.com" className="footer-link">
+<a
+href="mailto:CreekRanchInc@gmail.com"
+className="footer-link footer-email"
+>
 <span className="footer-icon">✉</span>
 CreekRanchInc@gmail.com
 </a>
@@ -71,7 +113,7 @@ CreekRanchInc@gmail.com
 href="https://maps.google.com/?q=413+CR+4781+Boyd+TX+76023"
 target="_blank"
 rel="noopener noreferrer"
-className="footer-link"
+className="footer-link footer-address"
 >
 <span className="footer-icon">⌖</span>
 413 CR 4781, Boyd, TX 76023
@@ -97,41 +139,42 @@ footer: {
 background: green,
 color: "white",
 textAlign: "center",
-padding: "45px 20px 25px",
+padding: "55px 20px 32px",
 marginTop: 60,
 borderTop: `5px solid ${gold}`,
 },
 
 contact: {
-marginBottom: 25,
+marginBottom: 30,
 },
 
 title: {
 color: gold,
-fontSize: 28,
-marginBottom: 20,
+fontSize: 34,
+marginBottom: 24,
 },
 
 logoWrap: {
 display: "flex",
 justifyContent: "center",
-margin: "25px 0",
+margin: "32px 0",
 },
 
 logo: {
-width: 170,
-maxWidth: "80%",
+width: 210,
+maxWidth: "78%",
 background: "white",
-padding: 10,
-borderRadius: 18,
-border: `3px solid ${gold}`,
+padding: 12,
+borderRadius: 20,
+border: `4px solid ${gold}`,
 },
 
 line: {
-marginTop: 20,
+marginTop: 26,
 color: gold,
-letterSpacing: 5,
+letterSpacing: 6,
 fontWeight: "bold",
-fontSize: 18,
+fontSize: 22,
+lineHeight: 1.5,
 },
 };
