@@ -4,7 +4,6 @@ const steps = [
 {
 image: "/images/journey-1.png",
 title: "Professional Halal Processing",
-subtitle: "USDA & HMS Certified",
 text: "Every order starts with clean, respectful, USDA-inspected and HMS halal-certified processing.",
 details: [
 "USDA inspected facility",
@@ -17,7 +16,6 @@ details: [
 {
 image: "/images/journey-2.png",
 title: "Fresh Cutting & Packing",
-subtitle: "Fresh • Vacuum Sealed",
 text: "Every order is carefully cut, packed, and prepared to preserve freshness and quality.",
 details: [
 "Custom cuts available",
@@ -30,7 +28,6 @@ details: [
 {
 image: "/images/journey-3.png",
 title: "Cold Storage & Safe Handling",
-subtitle: "Fresh • Temperature Controlled",
 text: "Products are stored under proper temperature control to maintain freshness and food safety.",
 details: [
 "Temperature monitored",
@@ -43,7 +40,6 @@ details: [
 {
 image: "/images/journey-4.png",
 title: "Fast Delivery & Customer Service",
-subtitle: "On Time • Reliable",
 text: "We deliver fresh halal products with professional service and reliable customer support.",
 details: [
 "Fast local delivery",
@@ -96,16 +92,12 @@ margin-top: 18px;
 font-size: 36px !important;
 }
 
-.journey-img {
-height: auto !important;
-}
-
 .journey-content {
-padding: 22px 20px 26px !important;
+padding: 16px !important;
 }
 
-.journey-card-title {
-font-size: 24px !important;
+.journey-learn-btn {
+width: 100% !important;
 }
 }
 `}</style>
@@ -137,13 +129,8 @@ style={styles.image}
 </div>
 
 <div className="journey-content" style={styles.content}>
-<h3 className="journey-card-title" style={styles.title}>
-{step.title}
-</h3>
-
-<p style={styles.subtitle}>{step.subtitle}</p>
-
 <button
+className="journey-learn-btn"
 style={styles.learnBtn}
 onClick={() => setOpenIndex(isOpen ? null : index)}
 >
@@ -151,6 +138,8 @@ onClick={() => setOpenIndex(isOpen ? null : index)}
 </button>
 
 <div className={`details-box ${isOpen ? "open" : ""}`}>
+<h3 style={styles.detailsTitle}>{step.title}</h3>
+
 <ul style={styles.list}>
 {step.details.map((item) => (
 <li key={item} style={styles.item}>
@@ -222,22 +211,8 @@ display: "block",
 },
 
 content: {
-padding: "26px 24px 30px",
+padding: "16px 18px 20px",
 textAlign: "center",
-},
-
-title: {
-color: "#062b18",
-fontSize: "28px",
-margin: "0 0 8px",
-lineHeight: 1.15,
-},
-
-subtitle: {
-color: "#666",
-fontSize: "16px",
-fontWeight: "800",
-marginBottom: "20px",
 },
 
 learnBtn: {
@@ -249,6 +224,14 @@ padding: "13px 26px",
 fontWeight: "900",
 fontSize: "16px",
 cursor: "pointer",
+width: "85%",
+},
+
+detailsTitle: {
+color: "#062b18",
+fontSize: "22px",
+margin: "0 0 16px",
+lineHeight: 1.2,
 },
 
 list: {
@@ -272,6 +255,7 @@ lineHeight: 1.65,
 margin: 0,
 },
 };
+
 
 
 

@@ -11,51 +11,43 @@ transition: all .35s ease;
 
 .trust-card:hover {
 transform: translateY(-7px);
-box-shadow: 0 22px 50px rgba(0,0,0,.24) !important;
+box-shadow: 0 22px 50px rgba(0,0,0,.25) !important;
 }
 
-.trust-card img {
-transition: transform .45s ease;
-}
-
-.trust-card:hover img {
-transform: scale(1.035);
-}
-
-.trust-view-btn {
+.trust-btn {
 transition: all .3s ease;
 }
 
-.trust-view-btn:hover {
+.trust-btn:hover {
 transform: scale(1.04);
-box-shadow: 0 10px 24px rgba(0,0,0,.22);
+box-shadow: 0 10px 24px rgba(0,0,0,.25);
 }
 
 @media (max-width: 768px) {
-.trust-info {
-padding: 18px 16px 20px !important;
+.trust-card {
+min-height: 430px !important;
 }
 
 .trust-title {
-font-size: 22px !important;
+font-size: 25px !important;
 }
 
 .trust-subtitle {
-font-size: 15px !important;
+font-size: 16px !important;
 }
 }
 `}</style>
 
-<article className="trust-card" style={styles.card}>
-<div style={styles.imageWrap} onClick={() => onOpen(certificate)}>
-<img
-src={certificate.background}
-alt={certificate.title}
-style={styles.image}
-/>
-</div>
+<article
+className="trust-card"
+style={{
+...styles.card,
+backgroundImage: `url("${certificate.background}")`,
+}}
+>
+<div style={styles.overlay}></div>
 
-<div className="trust-info" style={styles.info}>
+<div style={styles.content}>
 <h3 className="trust-title" style={styles.title}>
 {certificate.title}
 </h3>
@@ -64,8 +56,12 @@ style={styles.image}
 {certificate.subtitle}
 </p>
 
+<p style={styles.description}>
+{certificate.description}
+</p>
+
 <button
-className="trust-view-btn"
+className="trust-btn"
 style={styles.button}
 onClick={() => onOpen(certificate)}
 >
@@ -79,52 +75,65 @@ View Certificate →
 
 const styles = {
 card: {
-width: "100%",
-background: "#fff6dc",
+position: "relative",
+minHeight: 500,
+backgroundSize: "cover",
+backgroundPosition: "center",
 border: `3px solid ${gold}`,
 borderRadius: 24,
 overflow: "hidden",
-boxShadow: "0 12px 30px rgba(0,0,0,.15)",
+boxShadow: "0 12px 32px rgba(0,0,0,.16)",
+display: "flex",
+alignItems: "flex-end",
 },
 
-imageWrap: {
-overflow: "hidden",
-cursor: "pointer",
+overlay: {
+position: "absolute",
+inset: 0,
+background:
+"linear-gradient(to bottom, rgba(255,246,220,.08), rgba(255,246,220,.58), rgba(255,246,220,.94))",
+zIndex: 1,
 },
 
-image: {
+content: {
+position: "relative",
+zIndex: 2,
 width: "100%",
-height: 230,
-objectFit: "cover",
-display: "block",
-},
-
-info: {
-padding: "20px 18px 22px",
+padding: "26px 22px 28px",
 textAlign: "center",
 },
 
 title: {
 color: green,
-fontSize: 24,
-margin: "0 0 8px",
+fontSize: 30,
+margin: "0 0 10px",
 fontWeight: "900",
+lineHeight: 1.15,
 },
 
 subtitle: {
 color: "#7c1d1d",
-fontSize: 16,
-fontWeight: "800",
-margin: "0 0 18px",
+fontSize: 18,
+fontWeight: "900",
+margin: "0 0 12px",
+},
+
+description: {
+color: "#222",
+fontSize: 15,
+lineHeight: 1.55,
+margin: "0 0 20px",
+fontWeight: "600",
 },
 
 button: {
 background: green,
 color: "white",
-border: "none",
+border: `2px solid ${gold}`,
 borderRadius: 14,
-padding: "12px 22px",
+padding: "13px 26px",
 fontWeight: "900",
+fontSize: 15,
 cursor: "pointer",
 },
 };
