@@ -3,8 +3,10 @@ import { green, gold } from "../styles";
 
 export default function Footer({ setView }) {
 const goTo = (page) => {
+if (setView) {
 setView(page);
 window.scrollTo({ top: 0, behavior: "smooth" });
+}
 };
 
 return (
@@ -85,19 +87,43 @@ style={styles.logo}
 <h3 style={styles.follow}>Follow Us</h3>
 
 <div style={styles.socials}>
-<a href="#" className="footer-social" aria-label="Facebook">
+<a
+href="https://facebook.com"
+className="footer-social"
+aria-label="Facebook"
+target="_blank"
+rel="noreferrer"
+>
 <FacebookIcon />
 </a>
 
-<a href="#" className="footer-social" aria-label="Instagram">
+<a
+href="https://instagram.com"
+className="footer-social"
+aria-label="Instagram"
+target="_blank"
+rel="noreferrer"
+>
 <InstagramIcon />
 </a>
 
-<a href="#" className="footer-social" aria-label="X">
+<a
+href="https://x.com"
+className="footer-social"
+aria-label="X"
+target="_blank"
+rel="noreferrer"
+>
 <XIcon />
 </a>
 
-<a href="#" className="footer-social" aria-label="LinkedIn">
+<a
+href="https://linkedin.com"
+className="footer-social"
+aria-label="LinkedIn"
+target="_blank"
+rel="noreferrer"
+>
 <LinkedInIcon />
 </a>
 </div>
