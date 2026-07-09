@@ -90,7 +90,7 @@ Order Now
 
 <button
 className="hero-btn"
-style={styles.aboutBtn}
+style={styles.secondaryBtn}
 onClick={() => setView("about")}
 >
 About Us
@@ -98,7 +98,7 @@ About Us
 
 <button
 className="hero-btn"
-style={styles.careerBtn}
+style={styles.secondaryBtn}
 onClick={() => setView("careers")}
 >
 Careers
@@ -200,7 +200,7 @@ fontWeight: "900",
 cursor: "pointer",
 },
 
-aboutBtn: {
+secondaryBtn: {
 background: "rgba(255,255,255,.14)",
 color: "white",
 border: "2px solid #d5a642",
@@ -211,16 +211,4 @@ fontWeight: "900",
 cursor: "pointer",
 backdropFilter: "blur(6px)",
 },
-
-careerBtn: {
-background: "rgba(6,43,24,.85)",
-color: "white",
-border: "2px solid #d5a642",
-borderRadius: "14px",
-padding: "15px 36px",
-fontSize: "18px",
-fontWeight: "900",
-cursor: "pointer",
-},
 };
-

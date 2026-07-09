@@ -11,6 +11,8 @@ import Owner from "./components/Owner";
 import Careers from "./components/Careers";
 import TrustBadges from "./components/TrustBadges";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ContactUs from "./components/ContactUs";
 
 import { styles } from "./styles";
 import { apiCreateOrder, apiGetProducts, apiUpdateProduct } from "./api";
@@ -191,7 +193,9 @@ saveProduct={saveProduct}
 />
 )}
 
-<Footer />
+<ContactUs />
+<WhatsAppButton />
+<Footer setView={setView} />
 </div>
 );
 }
